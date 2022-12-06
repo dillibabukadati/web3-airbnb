@@ -1,15 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import bg from "../images/frontpagebg2.png";
 import logo from "../images/airbnb.png";
-import { ConnectButton, Select, DatePicker, Input, Icon, Button } from "web3uikit";
+import {
+  ConnectButton,
+  Select,
+  DatePicker,
+  Input,
+  Icon,
+  Button,
+} from "web3uikit";
 import { useState } from "react";
+import axios from "axios";
 const Home = () => {
   const [checkIn, setCheckIn] = useState(new Date());
   const [checkOut, setCheckOut] = useState(new Date());
-  const [destination, setDestination] = useState("New York");
+  const [destination, setDestination] = useState();
   const [guests, setGuests] = useState(2);
+  const [cities, setCities] = useState([]);
+  const [selectedCity, setSelectedCity] = useState(null);
+  let formatter = new Intl.DateTimeFormat("en-US");
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://www.oyorooms.com/api/pwa/autocompletenew?query=ko&region=1&additionalFields=rating%2Csupply%2Ctrending%2Ctags%2Ccategory`
+      )
+      .then((res) => {
+        console.log(res);
+        let data = res.data.responseObject;
+        data = data.map((d) => {
+          d["label"] = d.displayName;
+          d["key"] = d.id;
+          return d;
+        });
+        setCities(() => data);
+        setDestination(data[0]);
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   return (
     <>
@@ -25,7 +55,7 @@ const Home = () => {
             <div>Online Experiences</div>
           </div>
           <div className="lrContainers">
-            <ConnectButton></ConnectButton>
+            {/* <ConnectButton></ConnectButton> */}
           </div>
         </div>
         <div className="tabContent">
@@ -34,21 +64,11 @@ const Home = () => {
               Location
               <Select
                 defaultOptionIndex={0}
-                onChange={(data) => setDestination(data)}
-                options={[
-                  {
-                    id: "ny",
-                    label: "New York",
-                  },
-                  {
-                    id: "lon",
-                    label: "London",
-                  },
-                  {
-                    id: "la",
-                    label: "Los Angeles",
-                  },
-                ]}
+                onChange={(data) => {
+                  setSelectedCity(data);
+                  setDestination(data);
+                }}
+                options={cities}
               ></Select>
             </div>
             <div className="vl" />
@@ -84,6 +104,10 @@ const Home = () => {
                 checkIn: checkIn,
                 checkOut: checkOut,
                 guests: guests,
+                latitude: selectedCity?.centerPoint.lat,
+                longitude: selectedCity?.centerPoint.lng,
+                checkin: `${formatter.format(checkIn)}`,
+                checkout: `${formatter.format(checkOut)}`,
               }}
             >
               <div className="searchButton">
@@ -99,8 +123,9 @@ const Home = () => {
           Let us decide and discover new places to stay, live, work, or just
           relax.
         </div>
-        <Button text="Explore a Location"
-        onClick={()=>console.log('explore clicked')}
+        <Button
+          text="Explore a Location"
+          onClick={() => console.log("explore clicked")}
         ></Button>
       </div>
     </>

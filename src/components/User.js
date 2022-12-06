@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Icon, Modal, Card } from "web3uikit";
-import { useMoralis } from "react-moralis";
+// import { useMoralis } from "react-moralis";
 
 function User({ account }) {
   const [isVisible, setVisible] = useState(false);
-  const { Moralis } = useMoralis();
+  // const { Moralis } = useMoralis();
   const [userRentals, setUserRentals] = useState([]);
 
   useEffect(() => {
     async function fetchRentals() {
-      const Rentals = Moralis.Object.extend("newBookings");
-      const query = new Moralis.Query(Rentals);
-      query.equalTo("booker", account);
-      const result = await query.find();
-      setUserRentals(result);
+      // const Rentals = Moralis.Object.extend("newBookings");
+      // const query = new Moralis.Query(Rentals);
+      // query.equalTo("booker", account);
+      // const result = await query.find();
+      // setUserRentals(result);
     }
     fetchRentals();
   }, [isVisible]);
