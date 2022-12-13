@@ -9,12 +9,12 @@
     "static/js/3.e94e8b7e.chunk.js": "/web3-airbnb/static/js/3.e94e8b7e.chunk.js",
     "static/js/3.e94e8b7e.chunk.js.map": "/web3-airbnb/static/js/3.e94e8b7e.chunk.js.map",
     "main.css": "/web3-airbnb/static/css/main.8ba4f240.chunk.css",
-    "main.js": "/web3-airbnb/static/js/main.6cd47d00.chunk.js",
-    "main.js.map": "/web3-airbnb/static/js/main.6cd47d00.chunk.js.map",
+    "main.js": "/web3-airbnb/static/js/main.74065411.chunk.js",
+    "main.js.map": "/web3-airbnb/static/js/main.74065411.chunk.js.map",
     "runtime-main.js": "/web3-airbnb/static/js/runtime-main.fe9fbc16.js",
     "runtime-main.js.map": "/web3-airbnb/static/js/runtime-main.fe9fbc16.js.map",
-    "static/js/6.43c5f318.chunk.js": "/web3-airbnb/static/js/6.43c5f318.chunk.js",
-    "static/js/6.43c5f318.chunk.js.map": "/web3-airbnb/static/js/6.43c5f318.chunk.js.map",
+    "static/js/6.f4bcf3de.chunk.js": "/web3-airbnb/static/js/6.f4bcf3de.chunk.js",
+    "static/js/6.f4bcf3de.chunk.js.map": "/web3-airbnb/static/js/6.f4bcf3de.chunk.js.map",
     "static/js/7.47b841ac.chunk.js": "/web3-airbnb/static/js/7.47b841ac.chunk.js",
     "static/js/7.47b841ac.chunk.js.map": "/web3-airbnb/static/js/7.47b841ac.chunk.js.map",
     "static/js/8.6d7a3f78.chunk.js": "/web3-airbnb/static/js/8.6d7a3f78.chunk.js",
@@ -44,7 +44,7 @@
     "static/js/0.86062050.chunk.js.LICENSE.txt": "/web3-airbnb/static/js/0.86062050.chunk.js.LICENSE.txt",
     "static/js/2.a59dae26.chunk.js.LICENSE.txt": "/web3-airbnb/static/js/2.a59dae26.chunk.js.LICENSE.txt",
     "static/js/3.e94e8b7e.chunk.js.LICENSE.txt": "/web3-airbnb/static/js/3.e94e8b7e.chunk.js.LICENSE.txt",
-    "static/js/6.43c5f318.chunk.js.LICENSE.txt": "/web3-airbnb/static/js/6.43c5f318.chunk.js.LICENSE.txt",
+    "static/js/6.f4bcf3de.chunk.js.LICENSE.txt": "/web3-airbnb/static/js/6.f4bcf3de.chunk.js.LICENSE.txt",
     "static/js/7.47b841ac.chunk.js.LICENSE.txt": "/web3-airbnb/static/js/7.47b841ac.chunk.js.LICENSE.txt",
     "static/media/airbnb.b3ecd9c2.png": "/web3-airbnb/static/media/airbnb.b3ecd9c2.png",
     "static/media/airbnbRed.d4c2314d.png": "/web3-airbnb/static/media/airbnbRed.d4c2314d.png",
@@ -52,8 +52,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.fe9fbc16.js",
-    "static/js/6.43c5f318.chunk.js",
+    "static/js/6.f4bcf3de.chunk.js",
     "static/css/main.8ba4f240.chunk.css",
-    "static/js/main.6cd47d00.chunk.js"
+    "static/js/main.74065411.chunk.js"
   ]
 }
