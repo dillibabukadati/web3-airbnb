@@ -46,7 +46,7 @@ contract airbnb {
         uint256 id,
         address booker,
         string city,
-        string imgUrl 
+        string imgUrl
     );
 
     mapping(uint256 => rentalInfo) rentals;
@@ -81,23 +81,23 @@ contract airbnb {
         newRental.renter = owner;
         rentalIds.push(counter);
         emit rentalCreated(
-                name, 
-                city, 
-                lat, 
-                long, 
-                unoDescription, 
-                dosDescription, 
-                imgUrl, 
-                maxGuests, 
-                pricePerDay, 
-                datesBooked, 
-                counter, 
+                name,
+                city,
+                lat,
+                long,
+                unoDescription,
+                dosDescription,
+                imgUrl,
+                maxGuests,
+                pricePerDay,
+                datesBooked,
+                counter,
                 owner);
         counter++;
     }
 
     function checkBookings(uint256 id, string[] memory newBookings) private view returns (bool){
-        
+
         for (uint i = 0; i < newBookings.length; i++) {
             for (uint j = 0; j < rentals[id].datesBooked.length; j++) {
                 if (keccak256(abi.encodePacked(rentals[id].datesBooked[j])) == keccak256(abi.encodePacked(newBookings[i]))) {
@@ -110,18 +110,18 @@ contract airbnb {
 
 
     function addDatesBooked(uint256 id, string[] memory newBookings) public payable {
-        
+
         require(id < counter, "No such Rental");
         require(checkBookings(id, newBookings), "Already Booked For Requested Date");
-        require(msg.value == (rentals[id].pricePerDay * 1 ether * newBookings.length) , "Please submit the asking price in order to complete the purchase");
-    
+        require(msg.value == (rentals[id].pricePerDay * 20000 wei * newBookings.length) , "Please submit the asking price in order to complete the purchase");
+
         for (uint i = 0; i < newBookings.length; i++) {
             rentals[id].datesBooked.push(newBookings[i]);
         }
 
         payable(owner).transfer(msg.value);
         emit newDatesBooked(newBookings, id, msg.sender, rentals[id].city,  rentals[id].imgUrl);
-    
+
     }
 
     function getRental(uint256 id) public view returns (string memory, uint256, string[] memory){

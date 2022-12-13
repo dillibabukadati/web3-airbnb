@@ -13,6 +13,7 @@ import {
 } from "web3uikit";
 import { useState } from "react";
 import axios from "axios";
+import { locations } from "./data";
 const Home = () => {
   const [checkIn, setCheckIn] = useState(new Date());
   const [checkOut, setCheckOut] = useState(new Date());
@@ -23,13 +24,14 @@ const Home = () => {
   let formatter = new Intl.DateTimeFormat("en-US");
 
   useEffect(() => {
-    axios
-      .get(
-        `https://www.oyorooms.com/api/pwa/autocompletenew?query=ko&region=1&additionalFields=rating%2Csupply%2Ctrending%2Ctags%2Ccategory`
-      )
-      .then((res) => {
-        console.log(res);
-        let data = res.data.responseObject;
+    // axios
+    //   .get(
+    //     `https://www.oyorooms.com/api/pwa/autocompletenew?query=ko&region=1&additionalFields=rating%2Csupply%2Ctrending%2Ctags%2Ccategory`
+    //   )
+    //   .then((res) => {
+    //     console.log(res);
+        // let data = res.data.responseObject;
+        let data=locations;
         data = data.map((d) => {
           d["label"] = d.displayName;
           d["key"] = d.id;
@@ -37,8 +39,8 @@ const Home = () => {
         });
         setCities(() => data);
         setDestination(data[0]);
-      })
-      .catch((error) => console.error(error));
+    //   })
+    //   .catch((error) => console.error(error));
   }, []);
 
   return (
