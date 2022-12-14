@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from "react-router-dom";
+// import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 // import { MoralisProvider } from "react-moralis";
 import { NotificationProvider } from 'web3uikit';
 
@@ -13,9 +14,11 @@ ReactDOM.render(
   <React.StrictMode>
     {/* <MoralisProvider appId="o3atggXgHt6WVHeA75QldlSB9GMtaPYQHoymGJIP" serverUrl="https://6y7uce9ig85w.usemoralis.com:2053/server"> */}
       <NotificationProvider>
-      <BrowserRouter>
+      {/* <BrowserRouter basename={process.env.PUBLIC_URL}> */}
+      <HashRouter basename='/'>
         <App />
-      </BrowserRouter>
+      </HashRouter>
+      {/* </BrowserRouter> */}
       </NotificationProvider>
     {/* </MoralisProvider> */}
   </React.StrictMode>,
